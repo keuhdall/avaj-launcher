@@ -1,6 +1,6 @@
-package com.lmarques.tower;
+package com.avajLauncher.tower;
 
-import com.lmarques.aircraft.Coordinates;
+import com.avajLauncher.aircraft.Coordinates;
 
 public class WeatherProvider {
     private WeatherProvider weatherProvider;

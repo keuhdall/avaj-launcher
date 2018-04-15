@@ -1,4 +1,4 @@
-package com.lmarques.aircraft;
+package com.avajLauncher.weather;
 
 public class Coordinates {
     private int _longitude;
