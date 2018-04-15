@@ -1,20 +1,18 @@
-package com.avajLauncher.tower;
-
-import com.avajLauncher.aircraft.Coordinates;
+package com.avajLauncher.weather;
 
 public class WeatherProvider {
-    private WeatherProvider weatherProvider;
-    private static final String[] weather = {"1", "2", "3"};
+    private static WeatherProvider weatherProvider = new WeatherProvider();
+    private static final String[] weather = {"RAIN", "FOG", "SUN", "SNOW"};
 
     private WeatherProvider() {
-        weatherProvider = this;
     }
 
-    public WeatherProvider getProvider() {
+    public static WeatherProvider getProvider() {
         return weatherProvider;
     }
 
+
     public String getCurrentWeather(Coordinates coordinates) {
-        return weather[0];
+        return weather[(coordinates.get_height() + coordinates.get_latitude() + coordinates.get_longitude()) % 4];
     }
 }
