@@ -1,6 +1,8 @@
-import com.lmarques.tower.WeatherTower;
+package com.avajLauncher.aircraft;
+
+import com.avajLauncher.weather.WeatherTower;
 
 public interface Flyable {
-    public void updateConditions();
-    public void registerTower(WeatherTower weatherTower);
+    void updateConditions();
+    void registerTower(WeatherTower weatherTower);
 }
