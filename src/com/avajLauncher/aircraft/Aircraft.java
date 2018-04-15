@@ -1,4 +1,6 @@
-package com.lmarques.aircraft;
+package com.avajLauncher.aircraft;
+
+import com.avajLauncher.weather.Coordinates;
 
 public class Aircraft {
     protected long _id;
@@ -9,10 +11,10 @@ public class Aircraft {
     protected Aircraft(final String name, Coordinates coordinates) {
         _name = name;
         _coordinates = coordinates;
-        idCounter++;
+        _id = nextId();
     }
 
     private long nextId() {
-        return 0;
+        return idCounter++;
     }
 }
