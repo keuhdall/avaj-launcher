@@ -1,7 +1,21 @@
-package com.lmarques.aircraft;
+package com.avajLauncher.aircraft;
 
-public class JetPlane extends Aircraft {
-    public JetPlane(String name, Coordinates coordinates) {
+import com.avajLauncher.weather.Coordinates;
+import com.avajLauncher.weather.WeatherTower;
+
+public class JetPlane extends Aircraft implements Flyable {
+    JetPlane(String name, Coordinates coordinates) {
         super(name, coordinates);
+    }
+
+
+    @Override
+    public void updateConditions() {
+
+    }
+
+    @Override
+    public void registerTower(WeatherTower weatherTower) {
+
     }
 }

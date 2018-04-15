@@ -1,7 +1,20 @@
-package com.lmarques.aircraft;
+package com.avajLauncher.aircraft;
 
-public class Baloon extends Aircraft {
-    public Baloon(String name, Coordinates coordinates) {
+import com.avajLauncher.weather.Coordinates;
+import com.avajLauncher.weather.WeatherTower;
+
+public class Baloon extends Aircraft implements Flyable {
+    Baloon(String name, Coordinates coordinates) {
         super(name, coordinates);
+    }
+
+    @Override
+    public void updateConditions() {
+
+    }
+
+    @Override
+    public void registerTower(WeatherTower weatherTower) {
+        
     }
 }

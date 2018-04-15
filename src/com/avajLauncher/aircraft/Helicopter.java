@@ -1,7 +1,20 @@
-package com.lmarques.aircraft;
+package com.avajLauncher.aircraft;
 
-public class Helicopter extends Aircraft {
-    public Helicopter(String name, Coordinates coordinates) {
+import com.avajLauncher.weather.Coordinates;
+import com.avajLauncher.weather.WeatherTower;
+
+public class Helicopter extends Aircraft implements Flyable {
+    Helicopter(String name, Coordinates coordinates) {
         super(name, coordinates);
+    }
+
+    @Override
+    public void updateConditions() {
+
+    }
+
+    @Override
+    public void registerTower(WeatherTower weatherTower) {
+
     }
 }
