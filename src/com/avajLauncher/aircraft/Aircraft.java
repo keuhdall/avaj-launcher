@@ -1,7 +1,5 @@
 package com.avajLauncher.aircraft;
 
-import com.avajLauncher.weather.Coordinates;
-
 public class Aircraft {
     protected long _id;
     protected final String _name;

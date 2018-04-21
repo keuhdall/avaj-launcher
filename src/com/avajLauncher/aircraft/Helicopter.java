@@ -1,6 +1,5 @@
 package com.avajLauncher.aircraft;
 
-import com.avajLauncher.weather.Coordinates;
 import com.avajLauncher.weather.WeatherTower;
 
 public class Helicopter extends Aircraft implements Flyable {
