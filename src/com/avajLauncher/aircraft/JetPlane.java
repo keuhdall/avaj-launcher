@@ -11,11 +11,29 @@ public class JetPlane extends Aircraft implements Flyable {
 
     @Override
     public void updateConditions() {
-        _weatherTower.getWeather(_coordinates);//TODO: print output
+        String weather = _weatherTower.getWeather(_coordinates);
+        switch (weather) {
+            case "RAIN":
+                _coordinates = new Coordinates(_coordinates.get_longitude(), _coordinates.get_latitude() + 5, _coordinates.get_height());
+                System.out.println("It's raining. Better watch out for lightnings");
+                break;
+            case "FOG":
+                _coordinates = new Coordinates(_coordinates.get_longitude(), _coordinates.get_latitude() + 1, _coordinates.get_height());
+                System.out.println("The fog is killing me. Request permission to land.");
+                break;
+            case "SUN":
+                _coordinates = new Coordinates(_coordinates.get_longitude(), _coordinates.get_latitude() + 10, _coordinates.get_height() + 2);
+                System.out.println("This is hot.");
+                break;
+            case "SNOW":
+                _coordinates = new Coordinates(_coordinates.get_longitude(), _coordinates.get_latitude(), _coordinates.get_height() - 7);
+                System.out.println("OMG! Winter is coming!");
+                break;
+        }
     }
 
     @Override
     public void registerTower(WeatherTower weatherTower) {
         _weatherTower = weatherTower;
-    }
+    }//TODO: add log message
 }
