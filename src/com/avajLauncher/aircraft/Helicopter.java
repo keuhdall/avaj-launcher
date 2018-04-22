@@ -14,25 +14,27 @@ public class Helicopter extends Aircraft implements Flyable {
         switch (weather) {
             case "RAIN":
                 _coordinates = new Coordinates(_coordinates.get_longitude() + 5, _coordinates.get_latitude(), _coordinates.get_height());
-                System.out.println("It's raining.");
+                System.out.println("Helicopter#" + _name + "(" + _id + "): " + "It's raining.");
                 break;
             case "FOG":
                 _coordinates = new Coordinates(_coordinates.get_longitude() + 1, _coordinates.get_latitude(), _coordinates.get_height());
-                System.out.println("I can't see shit.");
+                System.out.println("Helicopter#" + _name + "(" + _id + "): " + "I can't see shit.");
                 break;
             case "SUN":
                 _coordinates = new Coordinates(_coordinates.get_longitude() + 10, _coordinates.get_latitude(), _coordinates.get_height() + 2);
-                System.out.println("This is hot.");
+                System.out.println("Helicopter#" + _name + "(" + _id + "): " + "This is hot.");
                 break;
             case "SNOW":
                 _coordinates = new Coordinates(_coordinates.get_longitude(), _coordinates.get_latitude(), _coordinates.get_height() - 12);
-                System.out.println("My rotor is going to freeze!");
+                System.out.println("Helicopter#" + _name + "(" + _id + "): " + "My rotor is going to freeze!");
                 break;
         }
     }
 
     @Override
     public void registerTower(WeatherTower weatherTower) {
+        System.out.println("Helicopter#" + _name + "(" + _id + "): " + "registered to weather tower.");
         _weatherTower = weatherTower;
-    }//TODO: add log message
+        _weatherTower.register(this);
+    }
 }
