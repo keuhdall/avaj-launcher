@@ -2,7 +2,7 @@ package com.avajLauncher.aircraft;
 
 import com.avajLauncher.weather.WeatherTower;
 
-public class Helicopter extends Aircraft implements Flyable {
+public class Helicopter extends Aircraft implements Flyable {//TODO: change println to logs
     private WeatherTower _weatherTower;
     Helicopter(String name, Coordinates coordinates) {
         super(name, coordinates);
@@ -28,6 +28,11 @@ public class Helicopter extends Aircraft implements Flyable {
                 _coordinates = new Coordinates(_coordinates.get_longitude(), _coordinates.get_latitude(), _coordinates.get_height() - 12);
                 System.out.println("Helicopter#" + _name + "(" + _id + "): " + "My rotor is going to freeze!");
                 break;
+        }
+        if (_coordinates.get_height() == 0) {
+            _weatherTower.unregister(this);
+            System.out.println("Helicopter#" + _name + "(" + _id + "): landing.");
+            System.out.println("Tower says: Helicopter#" + _name + "(" + _id + ")" + " unregistered from weather tower.");
         }
     }
 

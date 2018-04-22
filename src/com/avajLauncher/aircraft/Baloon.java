@@ -2,7 +2,7 @@ package com.avajLauncher.aircraft;
 
 import com.avajLauncher.weather.WeatherTower;
 
-public class Baloon extends Aircraft implements Flyable {
+public class Baloon extends Aircraft implements Flyable {//TODO: change println to logs
     private WeatherTower _weatherTower;
     Baloon(String name, Coordinates coordinates) {
         super(name, coordinates);
@@ -28,6 +28,11 @@ public class Baloon extends Aircraft implements Flyable {
                 _coordinates = new Coordinates(_coordinates.get_longitude(), _coordinates.get_latitude(), _coordinates.get_height() - 15);
                 System.out.println("Baloon#" + _name + "(" + _id + "): " + "It's snowing. We're  gonna crash.");
                 break;
+        }
+        if (_coordinates.get_height() == 0) {
+            _weatherTower.unregister(this);
+            System.out.println("Baloon#" + _name + "(" + _id + "): landing.");
+            System.out.println("Tower says: Baloon#" + _name + "(" + _id + ")" + " unregistered from weather tower.");
         }
     }
 
