@@ -8,7 +8,7 @@ public class Coordinates {
     Coordinates(int longitude, int latitude, int height) {
         _longitude = longitude;
         _latitude = latitude;
-        _height = height;
+        _height = height < 0 ? 0 : height > 100 ? 100 : height;
     }
 
     public int get_longitude() {
