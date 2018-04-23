@@ -8,7 +8,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Simulator {
-    public static BufferedWriter writer;
+    public static PrintWriter writer;
     private static List<Flyable> flyables = new ArrayList<>();
 
     public static void main(String[] args) {
@@ -16,13 +16,12 @@ public class Simulator {
             System.err.println("Please provide a scenario file");
             return;
         }
-
+        WeatherTower weatherTower = new WeatherTower();
         try {
             BufferedReader reader = new BufferedReader(new FileReader(args[0]));
-            writer = new BufferedWriter(new FileWriter("simulation.txt"));
+            writer = new PrintWriter(new FileWriter("simulation.txt"));
             String line = reader.readLine();
             if (line == null) return;
-            WeatherTower weatherTower = new WeatherTower();
             int simulations = Integer.parseInt(line.split(" ")[0]);
             if (simulations < 0) {
                 System.out.println("Invalid simulations count: " + simulations);
@@ -34,6 +33,10 @@ public class Simulator {
                         Integer.parseInt(line.split(" ")[2]),
                         Integer.parseInt(line.split(" ")[3]),
                         Integer.parseInt(line.split(" ")[4]));
+                if (flyable == null) {
+                    System.err.println("Error : invalid aircraft type");
+                    System.exit(1);
+                }
                 flyables.add(flyable);
             }
             for (Flyable flyable : flyables) {
@@ -43,14 +46,11 @@ public class Simulator {
                 weatherTower.changeWeather();
             }
 
-        } catch (IOException | ArrayIndexOutOfBoundsException e) {
-            e.printStackTrace();
+        } catch (IOException | ArrayIndexOutOfBoundsException | NumberFormatException e) {
+            System.err.println("Error : the file does not exist or is invalid.");
         } finally {
-            try {
+            if (writer != null)
                 writer.close();
-            } catch (IOException e) {
-                e.printStackTrace();
-            }
         }
     }
 }
