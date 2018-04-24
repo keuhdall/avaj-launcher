@@ -8,13 +8,25 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Simulator {
+    public static class NoArgumentException extends Exception {
+        NoArgumentException(String message) {
+            super(message);
+        }
+    }
+
     public static PrintWriter writer;
     private static List<Flyable> flyables = new ArrayList<>();
 
+    private static void checkArguments(String[] args) throws NoArgumentException {
+        if (args.length < 1) throw new NoArgumentException("Please provide a scenario file");
+    }
+
     public static void main(String[] args) {
-        if (args.length < 1) {
-            System.err.println("Please provide a scenario file");
-            return;
+        try {
+            checkArguments(args);
+        } catch (NoArgumentException e) {
+            System.err.println(e.getMessage());
+            System.exit(1);
         }
         WeatherTower weatherTower = new WeatherTower();
         try {
