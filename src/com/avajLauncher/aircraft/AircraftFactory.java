@@ -5,7 +5,7 @@ public class AircraftFactory {
         if (type.length() == 32) {
             for (int i = 0; i < type.length(); i++) {
                 if (!(type.charAt(i) >= '0' && type.charAt(i) <= '9') &&
-                    !(type.toUpperCase().charAt(i) >= 'A' && type.toUpperCase().charAt(i) <= 'Z')) {
+                    !(type.toUpperCase().charAt(i) >= 'A' && type.toUpperCase().charAt(i) <= 'F')) {
                     return false;
                 }
             }
